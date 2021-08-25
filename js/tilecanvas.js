@@ -24,10 +24,10 @@ var rescale = function (val) {
 this.rescale = rescale;
 
 var lineWidth = 1;
-var lineColor = 'black';
+var lineColor = 'white';
 
 var setStroke = function (w, c) {
-    lineColor = c || 'black';
+    lineColor = c || 'white';
     lineWidth = w;
     retile();
 };
@@ -256,7 +256,7 @@ var updateModelTile = function (point) {
 	    p0.strokeColor = 'red';
 	    p0.strokeWidth = 3;
 	} else {
-	    p0.strokeColor = 'black';
+	    p0.strokeColor = 'white';
 	}
 	p.addChild(p0);
     }
@@ -300,7 +300,7 @@ var sLineEdit = function (point) {
 		circ.fillColor = 'red';
 	    }
 	} else {
-	    p.strokeColor = 'black';
+	    p.strokeColor = 'white';
 	}
     }
 };
@@ -330,7 +330,7 @@ var uLineEdit = function (point) {
 		circ.fillColor = 'red';
 	    }
 	} else {
-	    p.strokeColor = 'black';
+	    p.strokeColor = 'white';
 	}
     }
 
@@ -382,6 +382,14 @@ var retile = function () {
     
     var gxt = 250;
     var gyt = 250;
+
+	// as part of the paperjs api, this path is automatically added to the active
+	// project (`tilecanvas`)
+	var background = new Path.Rectangle(
+		new Point(-1000, -1000), 
+		new Point(1000, 1000)
+	);
+	background.fillColor = 'black';
     
     var paths = new Group();
     for (var i = 0; i < unit.shapes.length ; i += 1) {	
